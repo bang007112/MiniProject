@@ -1,0 +1,191 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  font-family: "Poppins",sans-serif;
+
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-top: 5rem;
+  padding: 0px 0px 0px 0px;
+  z-index: 0; 
+  background-color: #e5e5e5;
+  min-height: 130vh;
+  display: flex;
+  flex-direction: column;
+}
+.row-header {
+  margin: 0px auto;
+  padding: 0px 0px; 
+}
+header{
+  width: 100%;
+}
+.jumbotron {
+  margin: 0px auto;
+  padding: 70px 30px;
+  background: #9575CD;
+  color: floralwhite; 
+}
+.navbar-dark {
+  background-color: #ffffff; 
+}
+.intro h1 span{
+  box-sizing: border-box;
+  color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #444444;
+}
+
+.intro h1{
+  font-size: 8rem;
+  font-weight: 700;
+}
+.main-Blog .imageBlog{
+  width: 100%;
+  min-height: 100%;
+}
+.main-Blog .fa{
+  color: #f4bf2c;
+}
+.btn-custom{
+    color: #444444;
+    background-color: #e5e5e5;
+    border: none;
+    padding-top: 1px;
+}
+.btn-custom:hover{
+  border: 2px solid #f4bf2c;
+}
+footer {
+  clear: both;
+  position: relative;
+  background-color: #EEEEEE;
+  margin-top: auto;
+}
+.subcribe{
+  padding: 4rem 0rem;
+  background-color: #F4BF2C;
+  color: black;
+  text-align: center;
+  width: 100%;
+}
+.itemcard{
+  padding: 0 0rem;
+}
+.card{
+  background-color: #EEEEEE;
+  border: 0px;
+}
+a{
+  text-decoration: none;
+  color: #444444;
+  font-size: larger;
+}
+a:hover{
+  text-decoration: underline #F4BF2C;
+  color: black;
+}
+.imageAbout{
+  width: min(100%,550px);
+  height: 900px;
+  object-fit: cover;
+}
+.iconsAbout{
+  width: 80px;
+  height:80px;
+}
+.btn-summit:hover{
+  color: blue;
+}
+.Login{
+  width: 100%;
+  min-height: 720px;
+}
+.CreateBlog{
+  min-height: 80vh;
+}
+.About .main-intro h1 span{
+  box-sizing: border-box;
+  color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #444444;
+}
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #f6d365;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+.manageBlogTile{
+  font-family: 'Tangerine', serif;
+  font-size: 10vw;
+}
+.UserManage{
+  font-size: xx-large;
+}

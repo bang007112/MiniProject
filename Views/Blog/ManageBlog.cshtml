@@ -1,0 +1,32 @@
+@model IEnumerable<BlogInfo>
+    
+<div class="container">
+    <h3 class="text-center manageBlogTile">Blog Manament</h3>
+    <a asp-controller="Home" asp-action="Logout" class="btn btn-outline-danger h3 m-2">Logout</a>
+    <a asp-controller="Blog" asp-action="Index" class="btn btn-outline-success float-right h3 m-2">Create Blog</a>
+    <a asp-controller="User" asp-action="ManageUser" class="btn btn-outline-primary float-right h3 m-2">UserManage</a>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>BlogTitle</th>
+
+                <th>BlogImage</th>
+
+                <th>Likes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.BlogTitle</td>
+                    <td><img width="150vh" height="150vh" src="@item.BlogImage" alt="" srcset=""></td>
+                    <td>@item.Likes</td>
+                    <td> <a asp-area="" asp-controller="Blog" asp-action="DeleteBlog" asp-route-blogID="@item.BlogID"
+                        class="btn btn-danger">Delete</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,92 @@
+@model Contact
+<!--Section: Contact v.1-->
+<section class="section pb-5 container">
+  <!--Section heading-->
+  <h2 class="section-heading h1 pt-4 font-weight-bold text-info">Contact us</h2>
+  <!--Section description-->
+  <div class="row">
+
+    <!--Grid column-->
+    <div class="col-lg-5 mb-4">
+
+      <!--Form with header-->
+      <form asp-action="CreateContact" asp-controller="Contact" method="post">
+        <div class="card">
+
+        <div class="card-body">
+          <!--Header-->
+          <div class="form-header blue accent-1">
+            <h3><i class="fas fa-envelope" style="font-size: xx-large; color: #9E9E9E;"></i> Write to us:</h3>
+          </div>
+
+          <p class="">We'll write rarely, but with only the best content.</p>
+          <br>
+
+          <!--Body-->
+          <div class="md-form">
+            <i class="fas fa-user prefix grey-text" style="font-size: xx-large;  color: #9E9E9E;"></i>
+            <input type="text" id="form-name" class="form-control" asp-for="Name">
+            <label for="form-name" class="font-weight-bold">Your name</label>
+          </div>
+
+          <div class="md-form">
+            <i class="fas fa-envelope prefix grey-text" style="font-size: xx-large;  color: #9E9E9E;"></i>
+            <input type="text" id="form-email" class="form-control" asp-for="Email">
+            <label for="form-email" class="font-weight-bold">Your email</label>
+          </div>
+
+          <div class="md-form">
+            <i class="fas fa-tag prefix grey-text" style="font-size: xx-large;  color: #9E9E9E;"></i>
+            <textarea id="form-Subject" class="form-control md-textarea" asp-for="Subject" rows="3"></textarea>
+            <label for="form-Subject" class="font-weight-bold">Subject</label>
+          </div>
+          <div class="text-center mt-4">
+            <button class="btn btn-light-blue btn-primary font-weight-bold btn-summit" style="background-color: #F4BF2C;">Submit</button>
+          </div>
+
+        </div>
+
+      </div>
+      </form>
+      <!--Form with header-->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-7 m-auto">
+
+      <!--Google map-->
+      <div id="map-container-google-11" class="z-depth-1-half map-container-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62860.62274103524!2d105.72255071571588!3d10.034269633341967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0882139720a77%3A0x3916a227d0b95a64!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBGUFQgQ-G6p24gVGjGoQ!5e0!3m2!1sen!2s!4v1641864745426!5m2!1sen!2s" height="450" style="border:0; width:min(100%,700px)" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <br>
+      <!--Buttons-->
+      <div class="row text-center mt-5">
+        <div class="col-md-4">
+          <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt" style="font-size: xx-large; color: #9E9E9E; color: blue;"></i></a>
+          <p>Can Tho</p>
+          <p>Viet Nam</p>
+        </div>
+
+        <div class="col-md-4">
+          <a class="btn-floating blue accent-1"><i class="fas fa-phone" style="font-size: xx-large; color: #9E9E9E; color: blue;"></i></a>
+          <p>+84 939430214</p>
+          <p>Mon - Fri, 8:00-23:00</p>
+        </div>
+
+        <div class="col-md-4">
+          <a class="btn-floating blue accent-1"><i class="fas fa-envelope" style="font-size: xx-large; color: #9E9E9E; color: blue;"></i></a>
+          <p>bang007112345@gmail.com</p>
+          <p>bangddh0605012001@gmail.com</p>
+        </div>
+      </div>
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+
+</section>
+<!--Section: Contact v.1-->

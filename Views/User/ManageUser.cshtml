@@ -1,0 +1,29 @@
+@model IEnumerable<User>
+<div class="container">
+    <h3 class="text-center manageBlogTile">User Manament</h3>
+    <a asp-controller="Home" asp-action="Logout" class="btn btn-outline-danger">Logout</a>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>UserName</th>
+
+                <th>Email</th>
+
+                <th>isAdmin</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Username</td>
+                    <td>@item.Email</td>
+                    <td>@item.isAdmin</td>
+                    <td> <a asp-area="" asp-controller="User" asp-action="Delete" asp-route-Id="@item.Username"
+                        class="btn btn-danger">Delete</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
