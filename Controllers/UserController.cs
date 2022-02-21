@@ -38,7 +38,7 @@ namespace BBlog.Controllers
                IEnumerable<User> listUser = this._context.Users;
                 return View(listUser);
             }
-            return NotFound();
+            return Redirect("/Home/Index");
         }
         [HttpPost]
         public IActionResult DeleteMember(User u)
@@ -78,5 +78,32 @@ namespace BBlog.Controllers
             return NotFound();
         }
 
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateUser(User user, IFormFile imageFile)
+        {
+            if(ModelState.IsValid && imageFile !=null){
+               string ImageName = $"id_{user.Username}" + Path.GetExtension(imageFile.FileName);
+                //Get url To Save
+                string saveRelativePath = $"/Image/UserImage";
+
+                string savePath = Directory.GetCurrentDirectory().Replace("\\", "/") + "/wwwroot" + saveRelativePath + ImageName;
+
+                Directory.CreateDirectory(Path.GetDirectoryName(savePath));
+
+                using (var stream = new FileStream(savePath, FileMode.Create))
+                {
+                    imageFile.CopyTo(stream);
+                }   
+                user.Avatar = saveRelativePath + ImageName;
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return Redirect("/Home/Login");
+            }
+            return View(user);
+        }
     }
 }

@@ -15629,6 +15629,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\bang0\\Documents\\BBlog\\Views\\Blog\\BlogDetail.cshtml",
+      "TargetPath": "Views\\Blog\\BlogDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\bang0\\Documents\\BBlog\\Views\\Blog\\ManageBlog.cshtml",
       "TargetPath": "Views\\Blog\\ManageBlog.cshtml",
       "FileKind": "mvc"
@@ -15676,6 +15681,11 @@
     {
       "FilePath": "c:\\Users\\bang0\\Documents\\BBlog\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bang0\\Documents\\BBlog\\Views\\User\\CreateUser.cshtml",
+      "TargetPath": "Views\\User\\CreateUser.cshtml",
       "FileKind": "mvc"
     },
     {

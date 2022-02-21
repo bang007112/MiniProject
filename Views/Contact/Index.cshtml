@@ -12,7 +12,6 @@
 
                 <th>Subject</th>
                 
-                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +21,6 @@
                     <td>@item.Name</td>
                     <td>@item.Email</td>
                     <td>@item.Subject</td>
-                    <td>@item.Status</td>
                     <td> <a asp-area="" asp-controller="User" asp-action="Delete" asp-route-Id="@item.Name"
                         class="btn btn-danger">Delete</a> </td>
                 </tr>

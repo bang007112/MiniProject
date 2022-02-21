@@ -6,27 +6,27 @@
       <div class="col col-lg-12 mb-4 mb-lg-0">
         <div class="card mb-3" style="border-radius: .5rem;">
           <div class="row g-0">
-            <div class="col-md-5 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-              <img
-                src="@Model.Avatar"
-                alt="Avatar"
-                class="img-fluid my-5"
-                style="width: 150px; border-radius: 50%;"
-              />
+            <div class="col-md-5 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="@Model.Avatar" alt="Avatar" class="img-fluid my-5" style="width: 150px; border-radius: 50%;" />
               <form id="myForm" asp-action="UpdateAvatar" method="post" enctype="multipart/form-data">
-              <label for="fileInput">
-                       <i style="border-radius:50% ;border: solid 2px white" class="font-weight-bold h4 p-2 fas fa-plus"></i>
-              </label>
-                <input id="fileInput" style="display: none;" class="file-info mb-3" type="file" accept=".png,.jpg" name="imageFile">
+                <label for="fileInput">
+                  <i style="border-radius:50% ;border: solid 2px white" class="font-weight-bold h4 p-2 fas fa-plus"></i>
+                </label>
+                <input id="fileInput" style="display: none;" class="file-info mb-3" type="file" accept=".png,.jpg"
+                  name="imageFile">
               </form>
-              
+
               <h5>@Model.Username</h5>
               <p>Web Designer</p>
               <i class="far fa-edit mb-5"></i>
             </div>
             <div class="col-md-7">
               <div class="card-body p-4">
-                <h3>Information</h3>
+                <div class="d-flex flex-row">
+                  <h3>Information</h3>
+                  <a asp-controller="Home" id="Logout" asp-action="Logout" class="btn btn-outline-danger h3 ml-auto">Logout</a>
+                </div>
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-12 mb-3">
@@ -46,7 +46,7 @@
 </section>
 
 <script>
-  document.getElementById("fileInput").onchange=function(){
+  document.getElementById("fileInput").onchange = function () {
     swal({
       title: "Update Avatar?",
       text: "You will have a new avatar",
@@ -54,18 +54,41 @@
       buttons: true,
       dangerMode: true,
     })
-    .then((willUpdate) => {
-      if (willUpdate) {
-        swal("You have updated your avatar successfully!", {
-          icon: "success",
-        });
-      } else {
-        swal("you have failed to update your avatar!");
-      }
+      .then((willUpdate) => {
+        if (willUpdate) {
+          swal("You have updated your avatar successfully!", {
+            icon: "success",
+          });
+        } else {
+          swal("you have failed to update your avatar!");
+        }
       }).then(() => {
-    // Makes .then() return a rejected promise
-    document.getElementById("myForm").submit();
-  });
+        // Makes .then() return a rejected promise
+        document.getElementById("myForm").submit();
+      });
+  };
+
+  document.getElementById("Logout").onclick = function (e) {
+    e.preventDefault();
+    swal({
+      title: "Are you want to Logout?",
+      text: "You will Logout",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willUpdate) => {
+        if (willUpdate) {
+          swal("You are Logout successfully!", {
+            icon: "success",
+            timer: 1500,
+          });
+        } else {
+          swal("Fail to Logout!");
+        }
+      }).then((e) => {
+          window.location.href = this.href;
+        });
   };
 
 </script>

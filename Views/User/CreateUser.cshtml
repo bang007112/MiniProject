@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "CreateUser";
+}
+@model User
+<div class="Login">
+    <h2 class="manageTile text-center">Register</h2>
+    <section class="vh-100 ">
+        <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100 box-login">
+                <div class="col-md-8 col-lg-7 col-xl-6">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                        class="img-fluid" alt="Phone image">
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <form asp-action="CreateUser" asp-controller="User" method="post" enctype="multipart/form-data">
+                        <!-- Username input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form1Example13" asp-for="Username"
+                                class="form-control form-control-lg" />
+                            <label class="form-label" for="form1Example13">UserName</label>
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="email" id="form1Example13" asp-for="Email"
+                                class="form-control form-control-lg" />
+                            <label class="form-label" for="form1Example13">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="form1Example23" asp-for="Password"
+                                class="form-control form-control-lg" />
+                            <label class="form-label" for="form1Example23">Password</label>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <label for="fileInput" class="h5">
+                            Avatar
+                            <i style="border-radius:50% ;border: solid 2px white"
+                                class="font-weight-bold h4 p-2 fas fa-plus"></i>
+                        </label>
+                        <input id="fileInput" style="display: none;" class="file-info mb-3" type="file"
+                            accept=".png,.jpg" name="imageFile">
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Summit</button>
+
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                        </div>
+
+                        <a class="btn btn-primary btn-lg btn-block" asp-controller="Home" asp-action="Facebook"
+                            style="background-color: #3b5998" role="button">
+                            <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

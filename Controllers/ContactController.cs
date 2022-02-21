@@ -21,8 +21,8 @@ namespace BBlog.Controllers
         }
         public IActionResult Index()
         {
-            if(HttpContext.Session.GetString("Username")!=null){
-            string username = HttpContext.Session.GetString("Username"); 
+            if(Request.Cookies["Username"]!=null){
+            string username = Request.Cookies["Username"]; 
             if(_context.Users.Find(username).isAdmin==true)
             {
                 IEnumerable<Contact> listContact = this._context.Contacts;
@@ -39,6 +39,32 @@ namespace BBlog.Controllers
                 _context.SaveChanges();
             }
             return Redirect("/Home/Index");
+        }
+        public IActionResult UpdateContact(Contact contact)
+        {
+            if(ModelState.IsValid){
+                _context.Contacts.Update(contact);
+                _context.SaveChanges();
+            }
+            return Redirect("/Contact/Index");
+        }
+        public IActionResult DeleteContact(int contactID)
+        {
+            if(contactID != null){
+                Contact c = _context.Contacts.Find(contactID);
+                _context.Contacts.Add(c);
+                _context.SaveChanges();
+            }
+            return Redirect("/Contact/Index");
+        }
+        public IActionResult UpdateStatus(string name)
+        {
+            if(name != null){
+                Contact c = _context.Contacts.Find(name);
+                _context.Contacts.Update(c);
+                _context.SaveChanges();
+            }
+            return Redirect("/Contact/Index");
         }
     }
 }

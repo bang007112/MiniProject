@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BBlog.Migrations
 {
@@ -29,7 +30,7 @@ namespace BBlog.Migrations
                 {
                     BlogID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ReleaseDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BlogTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BlogImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BlogContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -46,8 +47,7 @@ namespace BBlog.Migrations
                 {
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false)
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,7 +60,8 @@ namespace BBlog.Migrations
                 {
                     Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Avatar = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
                     isAdmin = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

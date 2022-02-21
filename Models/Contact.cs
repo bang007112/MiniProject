@@ -15,7 +15,5 @@ namespace BBlog.Models
         public string Email { get; set; }
         [Required (ErrorMessage="Subject cannot be blank")]
         public string Subject { get; set; }
-
-        public bool Status { get; set; }
     }
 }

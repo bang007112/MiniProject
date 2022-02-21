@@ -30,18 +30,18 @@ namespace BBlog.Controllers
         string appsecret = string.Empty;
 
         private readonly ProgramDbContext _context;
-        
 
-        public HomeController(ILogger<HomeController> logger,ProgramDbContext context)
+
+        public HomeController(ILogger<HomeController> logger, ProgramDbContext context)
         {
             _context = context;
 
-            _logger= logger;
+            _logger = logger;
             var configuration = GetConfiguration();
             appid = configuration.GetSection("AppID").Value;
             appsecret = configuration.GetSection("AppSecret").Value;
 
-           
+
         }
         public IConfiguration GetConfiguration()
         {
@@ -63,65 +63,71 @@ namespace BBlog.Controllers
         public IActionResult Facebook()
         {
             var fb = new FacebookClient();
-            
+
             var loginurl = fb.GetLoginUrl(new
             {
                 client_id = appid,
-                client_secret=appsecret,
+                client_secret = appsecret,
 
-                redirect_uri=RedirectUri.AbsoluteUri,
-                response_type="code",
-                scope= "email"
+                redirect_uri = RedirectUri.AbsoluteUri,
+                response_type = "code",
+                scope = "email"
             });
             return Redirect(loginurl.AbsoluteUri);
         }
-        public async Task<IActionResult> FacebookCallbackAsync(string code)
+        public IActionResult FacebookCallbackAsync(string code)
         {
             var fb = new FacebookClient();
             dynamic result = fb.Post("oauth/access_token", new
             {
                 client_id = appid,
-                client_secret=appsecret,
-                redirect_uri=RedirectUri.AbsoluteUri,
-                code=code
+                client_secret = appsecret,
+                redirect_uri = RedirectUri.AbsoluteUri,
+                code = code
             });
             var accesstoken = result.access_token;
             fb.AccessToken = accesstoken;
             dynamic data = fb.Get("me?fields=link,first_name,currency,last_name,email,gender,locale,timezone,verified,picture,age_range");
             string email = data.email;
-            User user = new User();
-            if(_context!= null){
-                user = _context.Users.FirstOrDefault(e => e.Email == email);
-            }
-            if(user != null){
+            User user = _context.Users.FirstOrDefault(e => e.Email == email);
+            if (user != null)
+            {
                 string username = data.email.Split("@")[0];
 
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddMinutes(30);
                 Response.Cookies.Append("Username", username, options);
-
-                if(email.Equals("bangddh06052001@gmail.com")){
+                
+                if (user.isAdmin)
+                {
+                    TempData["Login"] = "Success";
                     return Redirect("/Blog/ManageBlog");
                 }
                 return RedirectToAction("Index", "Home");
-            }else{
-                RegisterAsync(data);
-                return RedirectToAction("Index", "Home");
             }
-            
-            
+            else
+            {
+                RegisterAsync(data);
+                return Redirect("/Blog/ManageBlog");
+            }
+
+
         }
-        public async Task RegisterAsync(dynamic data){
+        public async Task RegisterAsync(dynamic data)
+        {
             string email = data.email;
             string picture = data.picture.ToString();
             string username = data.email.Split("@")[0];
             bool is_admin;
-            if (email.Equals("bangddh06052001@gmail.com")){ 
+            if (email.Equals("bangddh06052001@gmail.com"))
+            {
                 is_admin = true;
-            } else{ 
+            }
+            else
+            {
                 is_admin = false;
             }
-            User user = new User{Username = username, Avatar = picture, Email = email, isAdmin = is_admin};
+            User user = new User { Username = username, Password = "123456", Avatar = picture, Email = email, isAdmin = is_admin };
             this._context.Users.Add(user);
             this._context.SaveChanges();
             CookieOptions options = new CookieOptions();
@@ -132,29 +138,62 @@ namespace BBlog.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<BlogInfo> listBlog = this._context.BlogInfos;
+            return View(listBlog);
         }
         public IActionResult About()
         {
             return View();
         }
-        public IActionResult Contact(){
+        public IActionResult Contact()
+        {
             return View();
         }
 
-        public IActionResult HandlingContact(){
-            
-            return View();
-        }
-        public void ManageContact(Contact ct){
-            
-        }
+        public IActionResult HandlingContact()
+        {
 
-        public IActionResult Login(){
             return View();
         }
-        public IActionResult Logout(){
-            HttpContext.Session.Clear();
+        public void ManageContact(Contact ct)
+        {
+
+        }
+        [HttpGet]
+        public IActionResult Login()
+        {
+            try{
+                string username="";
+                bool check = Request.Cookies.TryGetValue("Username",out username);
+                if(check && username=="bangddh06052001"){
+                    return Redirect("/Blog/ManageBlog");
+                }else if(username!="bangddh06052001" && username != null){
+                    return Redirect("/User/Index");
+                }
+                return View();
+            }catch{
+                return View();
+            }
+        }
+        [HttpPost]
+        public IActionResult Login(User user)
+        {
+            if (_context.Users.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password) != null)
+                {
+                    CookieOptions options = new CookieOptions();
+                    options.Expires = DateTime.Now.AddMinutes(30);
+                    Response.Cookies.Append("Username", user.Username, options);
+                    return Redirect("/User/Index");
+                }
+                else
+                {
+                    return Redirect("/Home/Login");
+                }
+            return View();
+        }
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("Username");
             return Redirect("/Home/Index");
         }
 

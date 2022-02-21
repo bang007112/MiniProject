@@ -1,38 +1,53 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <title>@ViewData["Title"] - BBlog</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-dark navbar-expand-md fixed-top">
-        <div class="container-fluid ml-5">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                <span class="navbar-toggler-icon text-dark font-weight-bold"><i class="fas fa-bars"></i></span>
-            </button>  
-           <span><a href="/Home" class="item-link"><img src="~/Image/Logo.png" alt="" width="90px" height="60px"></a></span>
-           <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link text-dark font-weight-bold" asp-controller="Home" asp-action="index"><span class="fa fa-home fa-lg"></span> Blog</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold" asp-controller="Home" asp-action="About"><span class="fa fa-info fa-lg"></span> About</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold"  asp-controller="Home" asp-action="Contact"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold" asp-controller="Home" asp-action="Login"><i class="fas fa-sign-in-alt fa-lg"></i></span> Login</a></li>
-                </ul>
+            <div class="container-fluid ml-5">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                    <span class="navbar-toggler-icon text-dark font-weight-bold"><i class="fas fa-bars"></i></span>
+                </button>
+                <span><a href="/Home" class="item-link"><img src="~/Image/Logo.png" alt="" width="90px"
+                            height="60px"></a></span>
+                <div class="collapse navbar-collapse" id="Navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><a class="nav-link text-dark font-weight-bold" asp-controller="Home"
+                                asp-action="index"><span class="fa fa-home fa-lg"></span> Blog</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark font-weight-bold" asp-controller="Home"
+                                asp-action="About"><span class="fa fa-info fa-lg"></span> About</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark font-weight-bold" asp-controller="Home"
+                                asp-action="Contact"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark font-weight-bold" asp-controller="Home"
+                                asp-action="Login"><i class="fas fa-sign-in-alt fa-lg"></i></span> Login</a></li>
+                    </ul>
                     <span class="navbar-text">
                         <a data-toggle="modal" data-target="#loginModal">
-                        <span class="fa fa-sign-in"></span> Login</a>
-                    </span>   
-                </div>         
+                            <span class="fa fa-sign-in"></span> Login</a>
+                    </span>
+                </div>
             </div>
         </nav>
     </header>
@@ -46,57 +61,61 @@
         <div class="">
             <div class="subcribe">
                 <h1 class="text-center">Newsletter - Stay tune and get the latest update</h1>
-                <span><h5 class="text-center">Far far away, behind the word mountains</h5></span>
+                <span>
+                    <h5 class="text-center">Far far away, behind the word mountains</h5>
+                </span>
             </div>
             <div class="itemcard row ml-5">
                 <div class="col-sm-3">
                     <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title text-dark font-weight-bold">Axole.</h2>
-                        <p class="card-text h5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                        <a href="#" class="card-link"><i class="icons fab fa-facebook-square"></i></a>
-                        <a href="#" class="card-link"><i class="icons fab fa-google-plus-square"></i></a>
+                        <div class="card-body">
+                            <h2 class="card-title text-dark font-weight-bold">Axole.</h2>
+                            <p class="card-text h5">A small river named Duden flows by their place and supplies it with
+                                the necessary regelialia.</p>
+                            <a href="#" class="card-link"><i class="icons fab fa-facebook-square"></i></a>
+                            <a href="#" class="card-link"><i class="icons fab fa-google-plus-square"></i></a>
+                        </div>
                     </div>
-                    </div>  
                 </div>
                 <div class="col-sm-3">
                     <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title text-dark font-weight-bold">EXPLORE</h4>
-                        <a href="#" class="card-link"><i class="fa fa-arrow-right"> About</i></i></a><br>
-                        <a href="#" class="card-link"><i class="fa fa-arrow-right"> Blog</i></i></a><br>
-                        <a href="#" class="card-link"><i class="fa fa-arrow-right"> Contact US</i></i></a>
+                        <div class="card-body">
+                            <h4 class="card-title text-dark font-weight-bold">EXPLORE</h4>
+                            <a href="#" class="card-link"><i class="fa fa-arrow-right"> About</i></i></a><br>
+                            <a href="#" class="card-link"><i class="fa fa-arrow-right"> Blog</i></i></a><br>
+                            <a href="#" class="card-link"><i class="fa fa-arrow-right"> Contact US</i></i></a>
+                        </div>
                     </div>
-                    </div>  
                 </div>
                 <div class="col-sm-3">
                     <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title text-dark font-weight-bold">RECENT POSTS</h4>
-                        <p class="card-text"></p>
-                        <a href="#" class="card-link"><i class="icons fab fa-facebook-square"></i></a>
-                        <a href="#" class="card-link"><i class="icons fab fa-google-plus-square"></i></a>
+                        <div class="card-body">
+                            <h4 class="card-title text-dark font-weight-bold">RECENT POSTS</h4>
+                            <p class="card-text"></p>
+                            <a href="#" class="card-link"><i class="icons fab fa-facebook-square"></i></a>
+                            <a href="#" class="card-link"><i class="icons fab fa-google-plus-square"></i></a>
+                        </div>
                     </div>
-                    </div>  
                 </div>
                 <div class="col-sm-3">
                     <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title text-dark font-weight-bold">HAVE A QUESTIONS?</h4>
-                        <p class="card-text"></p>
-                        <a href="#" class="card-link"><i class="icons fas fa-map-marker-alt"></i></i></a>
-                        <a href="#" class="card-link"><i class="icons fab fa-google-plus-square"></i></a>
+                        <div class="card-body">
+                            <h4 class="card-title text-dark font-weight-bold">HAVE A QUESTIONS?</h4>
+                            <p class="card-text"></p>
+                            <a href="#" class="card-link"><i class="icons fas fa-map-marker-alt"></i></i></a>
+                            <a href="#" class="card-link"><i class="icons fab fa-google-plus-square"></i></a>
+                        </div>
                     </div>
-                    </div>  
                 </div>
             </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

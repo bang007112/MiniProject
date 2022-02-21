@@ -1,11 +1,13 @@
 @model IEnumerable<User>
 <div class="container">
-    <h3 class="text-center manageBlogTile">User Manament</h3>
+    <h3 class="text-center manageTile">User Manament</h3>
     <a asp-controller="Home" asp-action="Logout" class="btn btn-outline-danger">Logout</a>
+    <a asp-controller="Blog" asp-action="Index" class="btn btn-outline-success float-right h3 m-2">Create Blog</a>
+    <a asp-controller="User" asp-action="ManageUser" class="btn btn-outline-primary float-right h3 m-2">UserManage</a>
     <hr>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr>
+            <tr class="h4">
                 <th>UserName</th>
 
                 <th>Email</th>

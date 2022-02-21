@@ -103,11 +103,16 @@ header{
   font-weight: 700;
 }
 .main-Blog .imageBlog{
-  width: 100%;
+  min-width: 100%;
   min-height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .main-Blog .fa{
   color: #f4bf2c;
+}
+.main-Blog p{
+  color: #999999;line-height: 1.6;
 }
 .btn-custom{
     color: #444444;
@@ -182,10 +187,42 @@ a:hover{
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
 }
-.manageBlogTile{
+.manageTile{
   font-family: 'Tangerine', serif;
   font-size: 10vw;
+  color: #F4BF2C;
 }
 .UserManage{
-  font-size: xx-large;
+  font-size: x
+  x-large;
+}
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.box-login{
+  box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 75%);
+  
+}
+.Login{
+  background-image: url("https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+.imageBlogDetail{
+    width: 100%;
+
+    object-fit: cover;
+}
+
+.content p img {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }

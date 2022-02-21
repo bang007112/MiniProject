@@ -97,3 +97,5 @@ C:\Users\bang0\Documents\BBlog\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.
 C:\Users\bang0\Documents\BBlog\obj\Debug\net5.0\Razor\Views\User\ManageUser.cshtml.g.cs
 C:\Users\bang0\Documents\BBlog\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
 C:\Users\bang0\Documents\BBlog\obj\Debug\net5.0\Razor\Views\Blog\ManageBlog.cshtml.g.cs
+C:\Users\bang0\Documents\BBlog\obj\Debug\net5.0\Razor\Views\Blog\BlogDetail.cshtml.g.cs
+C:\Users\bang0\Documents\BBlog\obj\Debug\net5.0\Razor\Views\User\CreateUser.cshtml.g.cs

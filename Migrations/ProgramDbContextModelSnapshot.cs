@@ -83,9 +83,6 @@ namespace BBlog.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Subject")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -105,7 +102,13 @@ namespace BBlog.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<bool>("isAdmin")
                         .HasColumnType("bit");

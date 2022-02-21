@@ -33,19 +33,21 @@ namespace BBlog.Controllers
         [HttpPost]
         public IActionResult CreateBlog(BlogInfo blogInfo, IFormFile imageFile)
         {
-                string ImageName = $"id_{blogInfo.BlogTitle}" + Path.GetExtension(imageFile.FileName);
-                //Get url To Save
-                string saveRelativePath = $"/Image/BlogImage";
+                if(imageFile!=null){
+                    string ImageName = $"id_{blogInfo.BlogTitle}" + Path.GetExtension(imageFile.FileName);
+                    //Get url To Save
+                    string saveRelativePath = $"/Image/BlogImage";
 
-                string savePath = Directory.GetCurrentDirectory().Replace("\\", "/") + "/wwwroot" + saveRelativePath + ImageName;
+                    string savePath = Directory.GetCurrentDirectory().Replace("\\", "/") + "/wwwroot" + saveRelativePath + ImageName;
 
-                Directory.CreateDirectory(Path.GetDirectoryName(savePath));
+                    Directory.CreateDirectory(Path.GetDirectoryName(savePath));
 
-                using (var stream = new FileStream(savePath, FileMode.Create))
-                {
-                    imageFile.CopyTo(stream);
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        imageFile.CopyTo(stream);
+                    }
+                    blogInfo.BlogImage = saveRelativePath + ImageName;
                 }
-                blogInfo.BlogImage = saveRelativePath + ImageName;
                 _context.BlogInfos.Add(blogInfo);
                 _context.SaveChanges();
             return Redirect("/Home/Index");
@@ -70,6 +72,14 @@ namespace BBlog.Controllers
                 return Redirect("/Blog/ManageBlog");
             }
             return Redirect("/Home/Login");
+        }
+        
+        public IActionResult BlogDetail(int blogID)
+        {
+            BlogInfo b = _context.BlogInfos.Find(blogID);
+            ViewData["LoginUserName"] = Request.Cookies["Username"];
+            ViewData["Comments"] = _context.BlogComments.Where(item => item.BlogID == blogID).ToList();
+            return View(b);
         }
     }
 }

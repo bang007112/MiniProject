@@ -2,31 +2,47 @@
 
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 <section class="container-fluid CreateBlog">
-    <form asp-action="CreateBlog" method="post" enctype="multipart/form-data">
+    <form asp-action="CreateBlog" method="post" enctype="multipart/form-data" id="myForm">
         <br>
-        <h1 class="text-center">Classic editor</h1>
+        <h1 class="text-center manageTile">Classic editor</h1>
         <div class="container">
             <h3>Title</h3>
+            <a asp-controller="Blog" asp-action="ManageBlog"
+                class="btn btn-outline-success float-right h3">ManageBlog</a>
             <input class="mb-3" type="text" id="BlogTitle" asp-for="BlogTitle">
             <h3>Banner</h3>
             <input class="file-info mb-3" type="file" accept=".png,.jpg" name="imageFile">
             <div class="form-group">
-                    <textarea type="text" class="form-control" aria-describedby="NameHelp"
-                        placeholder="Enter Content" asp-for="BlogContent"></textarea> 
-                    <small class="form-text text-muted">Enter your Blog content</small>
-                    <span asp-validation-for="BlogContent" class="text-danger"></span>
+                <textarea type="text" class="form-control" aria-describedby="NameHelp" placeholder="Enter Content"
+                    asp-for="BlogContent"></textarea>
+                <small class="form-text text-muted">Enter your Blog content</small>
+                <span asp-validation-for="BlogContent" class="text-danger"></span>
             </div>
             <div class="text-center mt-4">
-            <button class="btn btn-light-blue btn-primary font-weight-bold btn-summit" style="background-color: #F4BF2C;">Submit</button>
-          </div>
+                <button class="btn btn-light-blue btn-primary font-weight-bold btn-summit"
+                    style="background-color: #F4BF2C;" id="btn-summit">Submit</button>
+            </div>
         </div>
 
     </form>
 </section>
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#BlogContent' ) )
-            .catch( error => {
-                console.error( error );
-            });
-    </script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#BlogContent'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    document.getElementById("btn-summit").onclick = function (e) {
+        e.preventDefault();
+        swal({
+            title: "Summit?",
+            text: "You summit blog success",
+            icon: "Success",
+            buttons: true,
+            dangerMode: true,
+        }).then((e) => {
+            document.getElementById("myForm").submit();
+        });
+    };
+</script>

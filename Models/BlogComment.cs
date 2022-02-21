@@ -11,13 +11,13 @@ namespace BBlog.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int CommentID { get; set;}
-        public string CommentDate { get; set;}
+        public int CommentID { get; set; }
+        public string CommentDate { get; set; } = DateTime.Now.ToShortDateString();
         public int Likes { get; set; }
 
         public string CommentContent { get; set;}
 
-        public string Username { get; set;}
+        public string Username { get; set; }
         
         [ForeignKey("BlogInfo")]
         public int BlogID { get; set;}

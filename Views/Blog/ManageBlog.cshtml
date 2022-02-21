@@ -1,8 +1,8 @@
 @model IEnumerable<BlogInfo>
-    
+
 <div class="container">
-    <h3 class="text-center manageBlogTile">Blog Manament</h3>
-    <a asp-controller="Home" asp-action="Logout" class="btn btn-outline-danger h3 m-2">Logout</a>
+    <h3 class="text-center manageTile">Blog Manament</h3>
+    <a asp-controller="Home" asp-action="Logout" id="Logout" class="btn btn-outline-danger h3 m-2">Logout</a>
     <a asp-controller="Blog" asp-action="Index" class="btn btn-outline-success float-right h3 m-2">Create Blog</a>
     <a asp-controller="User" asp-action="ManageUser" class="btn btn-outline-primary float-right h3 m-2">UserManage</a>
     <hr>
@@ -30,3 +30,27 @@
         </tbody>
     </table>
 </div>
+<script>
+    document.getElementById("Logout").onclick = function (e) {
+    e.preventDefault();
+    swal({
+      title: "Are you want to Logout?",
+      text: "You will Logout",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willUpdate) => {
+        if (willUpdate) {
+          swal("You are Logout successfully!", {
+            icon: "success",
+            timer: 1500,
+          });
+        } else {
+          swal("Fail to Logout!");
+        }
+      }).then((e) => {
+          window.location.href = this.href;
+        });
+  };
+</script>
